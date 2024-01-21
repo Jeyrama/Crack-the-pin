@@ -28,3 +28,5 @@ function crack(hash) {
     if(crypto.createHash('md5').update(a).digest("hex") == hash) return a;
   }
 }
+
+// or
