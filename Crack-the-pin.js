@@ -17,3 +17,6 @@ Your task is to return the cracked PIN as string.
 Note: 
   Many languages have built-in tools to hash md5.
 */
+
+
+// Solution
