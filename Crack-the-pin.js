@@ -30,3 +30,40 @@ function crack(hash) {
 }
 
 // or
+
+let crypto = require('crypto');
+
+function MD5(str) {
+  return crypto.createHash('md5').update(str).digest('hex')
+}
+
+function crack(hash){
+  for (let a = 0; a < 10; a++) {
+        for (let b = 0; b < 10; b++) {
+            for (let c = 0; c < 10; c++) {
+                for (let d = 0; d < 10; d++) {
+                    for (let e = 0; e < 10; e++) {
+                        if (MD5(`${a}${b}${c}${d}${e}`) === hash) {
+                          return `${a}${b}${c}${d}${e}`;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// or
+
+let crypto = require('crypto');
+
+function crack(hash){
+  for(let i = 0; i <= 99999; i++) { 
+    let pin = String(i);
+    if(pin.length < 2) pin = '0000'+''+ pin;
+    if(pin.length < 3) pin = '000'+''+ pin;
+    if(pin.length < 4) pin = '00'+''+ pin;
+    if(pin.length < 5) pin = '0'+''+ pin;
+    if(crypto.createHash('md5').update(String(pin)).digest("hex") === hash) return pin;
+  }
+}
