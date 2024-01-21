@@ -20,3 +20,11 @@ Note:
 
 
 // Solution
+
+function crack(hash) {
+  let crypto = require('crypto');
+  for (let i = 0; i<100000; i++) {
+    let a = ('00000'+i).slice(-5)
+    if(crypto.createHash('md5').update(a).digest("hex") == hash) return a;
+  }
+}
